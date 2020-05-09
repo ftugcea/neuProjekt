@@ -9,10 +9,10 @@
 
 <AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="564.0" style="-fx-background-color: #2C3A47;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.SignUPController">
    <children>
-      <TextField blendMode="OVERLAY" layoutX="234.0" layoutY="119.0" />
-      <TextField blendMode="OVERLAY" layoutX="234.0" layoutY="180.0" />
-      <TextField blendMode="OVERLAY" layoutX="234.0" layoutY="240.0" />
-      <PasswordField blendMode="OVERLAY" layoutX="234.0" layoutY="308.0" />
+      <TextField fx:id="namefield" blendMode="OVERLAY" layoutX="234.0" layoutY="119.0" />
+      <TextField fx:id="titlefield" blendMode="OVERLAY" layoutX="234.0" layoutY="180.0" />
+      <TextField fx:id="levelfield" blendMode="OVERLAY" layoutX="234.0" layoutY="240.0" />
+      <PasswordField fx:id="passfield" blendMode="OVERLAY" layoutX="234.0" layoutY="308.0" />
       <PasswordField blendMode="OVERLAY" layoutX="234.0" layoutY="372.0" />
       <Label layoutX="116.0" layoutY="122.0" prefHeight="20.0" prefWidth="43.0" text="Name" textFill="#eeeeee">
          <font>
@@ -39,12 +39,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="234.0" layoutY="457.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #1B9CFC;" text="Sign UP" textFill="WHITE">
+      <Button fx:id="signup" layoutX="234.0" layoutY="457.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #1B9CFC;" text="Sign UP" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button blendMode="COLOR_DODGE" layoutX="442.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: #2C3A47;" text="Login" textFill="WHITE">
+      <Button fx:id="login" blendMode="COLOR_DODGE" layoutX="442.0" layoutY="40.0" mnemonicParsing="false" onAction="#loginfunk" style="-fx-background-color: #2C3A47;" text="Login" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

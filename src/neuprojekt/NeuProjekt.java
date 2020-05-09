@@ -28,6 +28,8 @@ public class NeuProjekt extends Application {
         Scene scene= new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
     }
 
     /**
@@ -36,5 +38,6 @@ public class NeuProjekt extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+    
     
 }

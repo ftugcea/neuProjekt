@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="970.0" prefWidth="819.0" style="-fx-background-color: #3498db;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.Magnetic2Controller">
+   <children>
+      <Label layoutX="282.0" layoutY="22.0" text="Ekipman Bilgileri">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="110.0" text="Kutup Mesafesi, mm" />
+      <Label layoutX="139.0" layoutY="147.0" text="Cihaz" />
+      <Label layoutX="76.0" layoutY="181.0" text="MP Taşıyıcı Ortam" />
+      <Label layoutX="91.0" layoutY="261.0" text="UV Işık Şiddeti" />
+      <Label layoutX="59.0" layoutY="222.0" text="Mıknatıslama Tekniği" />
+      <Label layoutX="106.0" layoutY="305.0" text="Işık Mesafesi" />
+      <Label layoutX="448.0" layoutY="110.0" text="Muayene Bölgesi" />
+      <Label layoutX="487.0" layoutY="147.0" text="Akım Tipi" />
+      <Label layoutX="426.0" layoutY="181.0" text="Luxmetre/Işık Şiddeti" />
+      <Label layoutX="449.0" layoutY="222.0" text="Muayene Ortamı" />
+      <Label layoutX="447.0" layoutY="261.0" text="Mıknatıs Giderimi" />
+      <Label layoutX="489.0" layoutY="305.0" text="Isıl İşlem" />
+      <Label layoutX="74.0" layoutY="406.0" text="Yüzey Sıcaklığı (ºC)" />
+      <Label layoutX="43.0" layoutY="464.0" text="Muayene Bölgesindeki " />
+      <Label layoutX="512.0" layoutY="406.0" text="Yüzey" />
+      <Label layoutX="448.0" layoutY="447.0" text="Işık Cihazı Tanımı" />
+      <Label layoutX="425.0" layoutY="492.0" text="Kaldırma Testi Tarih/No" />
+      <Label layoutX="57.0" layoutY="483.0" text="Alan Şiddeti, kA/m" />
+      <ImageView fitHeight="93.0" fitWidth="175.0" layoutX="43.0" layoutY="564.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/Adsız.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="123.0" fitWidth="173.0" layoutX="49.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/Adsız2.png" />
+         </image>
+      </ImageView>
+      <CheckBox layoutX="230.0" layoutY="640.0" mnemonicParsing="false" text="CheckBox" />
+      <CheckBox layoutX="230.0" layoutY="769.0" mnemonicParsing="false" text="CheckBox" />
+      <AnchorPane layoutX="361.0" layoutY="548.0" prefHeight="243.0" prefWidth="395.0" style="-fx-border-color: #2C3A47;">
+         <children>
+            <VBox layoutX="2.0" layoutY="23.0" prefHeight="196.0" prefWidth="348.0" style="-fx-border-color: #2C3A47;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <AnchorPane prefHeight="49.0" prefWidth="348.0" style="-fx-border-color: #2C3A47;">
+                     <children>
+                        <Label layoutX="36.0" layoutY="16.0" text="BM" />
+                        <Label layoutX="196.0" layoutY="16.0" text="Ana Metal" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="49.0" prefWidth="348.0" style="-fx-border-color: #2C3A47;">
+                     <children>
+                        <Label layoutX="33.0" layoutY="16.0" text="HAZ" />
+                        <Label layoutX="165.0" layoutY="16.0" text="Isıdan Etkilenen Bölge" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="49.0" prefWidth="348.0" style="-fx-border-color: #2C3A47;">
+                     <children>
+                        <Label layoutX="36.0" layoutY="16.0" text="W" />
+                        <Label layoutX="202.0" layoutY="16.0" text="Kaynak" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="49.0" prefWidth="348.0" style="-fx-border-color: #2C3A47;">
+                     <children>
+                        <Label layoutX="38.0" layoutY="16.0" text="B" />
+                        <Label layoutX="196.0" layoutY="16.0" text="Kaynak Ağzı" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <Line endX="-24.0" endY="301.0" layoutX="129.0" layoutY="-60.0" startX="-24.0" startY="108.0" />
+            <AnchorPane layoutX="1.0" prefHeight="49.0" prefWidth="395.0" style="-fx-border-color: #2C3A47;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label layoutX="141.0" layoutY="14.0" text="Süreksizliğin Yeri">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="49.0" layoutY="835.0" text="Standarttan Sapmalar" />
+      <Label layoutX="59.0" layoutY="865.0" text="Muayene Tarihleri" />
+      <Label layoutX="54.0" layoutY="900.0" text="Açıklamalar ve Ekler" />
+      <Button layoutX="643.0" layoutY="889.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="123.0" style="-fx-background-color: #3742fa;" text="Next">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <TextField layoutX="177.0" layoutY="106.0" />
+      <TextField layoutX="177.0" layoutY="218.0" />
+      <TextField layoutX="177.0" layoutY="177.0" />
+      <TextField layoutX="177.0" layoutY="143.0" />
+      <TextField layoutX="177.0" layoutY="257.0" />
+      <TextField layoutX="177.0" layoutY="301.0" />
+      <TextField layoutX="551.0" layoutY="106.0" />
+      <ChoiceBox layoutX="551.0" layoutY="143.0" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #2980b9;" />
+      <TextField layoutX="551.0" layoutY="177.0" />
+      <TextField layoutX="551.0" layoutY="218.0" />
+      <TextField layoutX="551.0" layoutY="257.0" />
+      <TextField layoutX="551.0" layoutY="301.0" />
+      <TextField layoutX="177.0" layoutY="402.0" prefHeight="25.0" prefWidth="55.0" />
+      <TextField layoutX="172.0" layoutY="464.0" prefHeight="38.0" prefWidth="77.0" />
+      <TextField layoutX="551.0" layoutY="402.0" />
+      <TextField layoutX="551.0" layoutY="443.0" />
+      <TextField layoutX="551.0" layoutY="488.0" />
+      <Label layoutX="196.0" layoutY="865.0" text="Label" />
+      <TextArea layoutX="172.0" layoutY="825.0" prefHeight="37.0" prefWidth="538.0" />
+      <TextArea layoutX="171.0" layoutY="889.0" prefHeight="63.0" prefWidth="359.0" />
+   </children>
+</AnchorPane>
