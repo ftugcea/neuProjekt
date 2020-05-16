@@ -60,7 +60,7 @@ public class LoginMainController implements Initializable {
         String name = username.getText();
         String pass = password.getText();
         try {
-            String guery = "SELECT* FROM LOGIN NAME=? AND PASSWORD=?";
+            String guery = "SELECT * FROM LOGIN WHERE NAME=? AND PASSWORD=?";
         PreparedStatement statement = con.prepareStatement(guery);
         statement.setString(1, name);
         statement.setString(2, pass);

@@ -6,12 +6,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2C3A47;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.RaporsecController">
    <children>
-      <Button fx:id="radyografik" layoutX="116.0" layoutY="159.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="148.0" style="-fx-background-color: #60a3bc;" text="Radyografik Muayene Raporu">
+      <Button fx:id="radyografik" layoutX="135.0" layoutY="111.0" mnemonicParsing="false" prefHeight="83.0" prefWidth="297.0" style="-fx-background-color: #60a3bc;" text="Radyografik Muayene Raporu">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button fx:id="manyetik" layoutX="328.0" layoutY="159.0" mnemonicParsing="false" onAction="#manyetikAction" prefHeight="83.0" prefWidth="148.0" style="-fx-background-color: #60a3bc;" text="Manyetik Parçacık Muayene Raporu">
+      <Button fx:id="manyetik" layoutX="135.0" layoutY="210.0" mnemonicParsing="false" onAction="#manyetikAction" prefHeight="83.0" prefWidth="297.0" style="-fx-background-color: #60a3bc;" text="Manyetik Parçacık Muayene Raporu">
          <font>
             <Font size="15.0" />
          </font>

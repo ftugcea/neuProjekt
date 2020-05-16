@@ -62,7 +62,7 @@ public class SignUPController implements Initializable {
         login1.setResizable(false);
         
         
-    }
+    }/*
      public void signupfunk(ActionEvent e1) throws IOException{
          
          Connection con = Connectionsql.getConnection();
@@ -90,7 +90,7 @@ public class SignUPController implements Initializable {
             st.executeUpdate(query2);
          } catch (Exception e) {
            }
-      }
+      } */
          
          
      }
