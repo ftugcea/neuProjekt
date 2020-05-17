@@ -39,7 +39,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="signup" layoutX="234.0" layoutY="457.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #1B9CFC;" text="Sign UP" textFill="WHITE">
+      <Button fx:id="signup" layoutX="234.0" layoutY="457.0" mnemonicParsing="false" onAction="#signupfunk" prefHeight="25.0" prefWidth="149.0" style="-fx-background-color: #1B9CFC;" text="Sign UP" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>

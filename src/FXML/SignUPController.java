@@ -8,6 +8,7 @@ package FXML;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 import neuprojekt.Connectionsql;
 
 /**
@@ -62,10 +64,10 @@ public class SignUPController implements Initializable {
         login1.setResizable(false);
         
         
-    }/*
+    }
      public void signupfunk(ActionEvent e1) throws IOException{
          
-         Connection con = Connectionsql.getConnection();
+         
          
          String name = namefield.getText();
          String pass = passfield.getText();
@@ -74,24 +76,50 @@ public class SignUPController implements Initializable {
          
          
 
-         String query1 = "INSERT INTO person (name,title,level) VALUES (+ "'" + name +"'," + ",'" + title +"'," + ",'" + level +"'," + ",'" + password +"'," + ",'" + name +"')" ;
-         String query2 = "INSERT INTO login (name,password) VALUES (+"'" + name +"'," + ",'" + password +")";
+         String query1 = "INSERT INTO PERSON (name,title,level) VALUES (?,?,?)" ;
+         String query2 = "INSERT INTO LOGIN (name,password) VALUES (?,?)";
 
 
 
-
-       static void addPerson(){
-
-        
-        Stage st = new Stage();
-        
          try {
-            st.executeUpdate(query1);
-            st.executeUpdate(query2);
+             Connection con = Connectionsql.getConnection();
+             PreparedStatement p;
+             p = con.prepareStatement(query1);
+             p.setString(1, name);
+             p.setString(2, title);
+             p.setString(3, level);
+             
+             
+             
+             p.executeUpdate();
+             p.close();
+             con.close();
          } catch (Exception e) {
-           }
-      } */
-         
+             
+             JOptionPane.showMessageDialog(null, "Ekleme yapılamadı" + e);
+             
+         }
+         try {
+             Connection conn = Connectionsql.getConnection();
+             PreparedStatement pp;
+             
+             
+             pp = conn.prepareStatement(query2);
+             pp.setString(1, name);
+             pp.setString(2, pass);
+             
+             pp.executeUpdate();
+             JOptionPane.showMessageDialog(null, "Ekleme başarılı");
+             pp.close();
+             conn.close();
+         } catch (Exception e) {
+             
+             JOptionPane.showMessageDialog(null, "Ekleme yapılamadı" + e);
+             
+         }
+
+       
+     }
          
      }
 
