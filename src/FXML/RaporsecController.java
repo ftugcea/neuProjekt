@@ -39,12 +39,12 @@ public class RaporsecController implements Initializable {
         
         manyetik.getScene().getWindow().hide();
         
-        Stage signup1 = new Stage();
+        Stage magnetic = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/FXML/Magnetic1.fxml"));
         Scene scene =new Scene(root);
-        signup1.setScene(scene);
-        signup1.show();
-        signup1.setResizable(false);
+        magnetic.setScene(scene);
+        magnetic.show();
+        magnetic.setResizable(false);
     }
     
 }

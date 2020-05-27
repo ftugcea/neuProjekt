@@ -24,7 +24,7 @@
       <Label layoutX="93.0" layoutY="574.0" text="Rapor Tarihi" />
       <Label layoutX="97.0" layoutY="620.0" text="İş Emri No" />
       <Label layoutX="101.0" layoutY="671.0" text="Teklif No" />
-      <Button layoutX="462.0" layoutY="722.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="119.0" style="-fx-background-color: #3742fa;" text="Next">
+      <Button fx:id="nextbutton" layoutX="462.0" layoutY="722.0" mnemonicParsing="false" onAction="#nextButton" prefHeight="46.0" prefWidth="119.0" style="-fx-background-color: #3742fa;" text="Next">
          <font>
             <Font size="19.0" />
          </font>

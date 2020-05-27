@@ -5,9 +5,17 @@
  */
 package FXML;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -16,12 +24,23 @@ import javafx.fxml.Initializable;
  */
 public class Magnetic1Controller implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Button nextbutton;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }  
+    
+    public void nextButton(ActionEvent e) throws IOException{
+        nextbutton.getScene().getWindow().hide();
+        
+        Stage magnetic = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("/FXML/Magnetic2.fxml"));
+        Scene scene =new Scene(root);
+        magnetic.setScene(scene);
+        magnetic.show();
+        magnetic.setResizable(false);
+    }
     
 }

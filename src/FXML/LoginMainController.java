@@ -11,26 +11,58 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.property.Property;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javax.xml.ws.BindingProvider;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.scene.layout.StackPane;
 import javax.swing.JOptionPane;
 import neuprojekt.Connectionsql;
+import neuprojekt.UserTable;
+import org.hsqldb.Row;
 
 
 
 
 public class LoginMainController implements Initializable {
+    
+    @FXML
+    private Tab LoginPage;
+    
+    @FXML
+    private Tab UserControlPage;
+    
+    @FXML
+    private TableView<UserTable> usertable;
+
+    @FXML
+    private Button userlist;
+
+    @FXML
+    private Button DeleteButton;
+
+    @FXML
+    private Button updatebutton;
 
     @FXML
     private Button login;
@@ -44,8 +76,23 @@ public class LoginMainController implements Initializable {
     @FXML
     private TextField username;
     
+    @FXML
+    private TableColumn<UserTable, String> namecolumn;
+
+    @FXML
+    private TableColumn<UserTable, String> titlecolumn;
+
+    @FXML
+    private TableColumn<UserTable, String> levelcolumn;
+    
+    
+    
+    ObservableList<UserTable> oblist = FXCollections.observableArrayList();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        
         
         username.setStyle("-fx-text-inner-color: #1e272e");
         password.setStyle("-fx-text-inner-color: #1e272e");
@@ -60,8 +107,8 @@ public class LoginMainController implements Initializable {
         String name = username.getText();
         String pass = password.getText();
         try {
-            String guery = "SELECT * FROM LOGIN WHERE NAME=? AND PASSWORD=?";
-        PreparedStatement statement = con.prepareStatement(guery);
+            String query = "SELECT * FROM LOGIN WHERE NAME=? AND PASSWORD=?";
+        PreparedStatement statement = con.prepareStatement(query);
         statement.setString(1, name);
         statement.setString(2, pass);
         
@@ -96,6 +143,81 @@ public class LoginMainController implements Initializable {
         signup1.setScene(scene);
         signup1.show();
         signup1.setResizable(false);
+        
+        
+    }
+    @FXML
+    public void userlistAction(ActionEvent e3) throws SQLException {
+        
+        Connection con = Connectionsql.getConnection();
+        
+        ResultSet rs = con.createStatement().executeQuery("SELECT * FROM PERSON");
+        
+        while (rs.next()) {
+            oblist.add(new UserTable(rs.getString("name"), rs.getString("title"), rs.getString("level")));
+        }
+        
+        namecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        titlecolumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        levelcolumn.setCellValueFactory(new PropertyValueFactory<>("level")); 
+        
+        usertable.setItems(oblist);
+        
+        }
+    
+   /* @FXML
+    public void selectRow(ActionEvent ex) {
+        usertable.setOnMouseClicked((MouseEvent event) -> {
+        if(event.getButton().equals(MouseButton.PRIMARY)){
+            System.out.println(usertable.getSelectionModel().getSelectedItem());
+        }
+    });
+    } */
+        
+    @FXML
+    public void deleteAction(ActionEvent e5) {
+        
+        usertable.setOnMouseClicked((MouseEvent event) -> {
+        if(event.getButton().equals(MouseButton.PRIMARY)){
+            System.out.println(usertable.getSelectionModel().getSelectedItem());
+        }
+    });
+        
+        try {
+            
+            Connection con = Connectionsql.getConnection();
+            
+            String query = "DELETE FROM PERSON WHERE name = ?";
+            
+            PreparedStatement pst;
+            pst = con.prepareStatement(query);
+            pst.setString(1, usertable.getSelectionModel().getSelectedItem().getName());
+            System.out.println(query);
+            pst.executeUpdate();
+            pst.close();
+            
+            
+            
+            JOptionPane.showMessageDialog(null,"Kullanıcı Silindi!");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Silinemedi!\n" + ex);
+        }
+        
+        try {
+            
+            Connection conn = Connectionsql.getConnection();
+            PreparedStatement pst1;
+                    
+            String query1 = "DELETE FROM LOGIN WHERE name = ?";
+            pst1 = conn.prepareStatement(query1);
+            pst1.setString(1, usertable.getSelectionModel().getSelectedItem().getName());
+            System.out.println(query1);
+            pst1.executeUpdate();
+            pst1.close();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Silinemedi!\n" + e);
+        }
         
         
     }
