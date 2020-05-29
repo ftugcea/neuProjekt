@@ -85,7 +85,20 @@ public class LoginMainController implements Initializable {
     @FXML
     private TableColumn<UserTable, String> levelcolumn;
     
+    @FXML
+    private Button editButton;
+
+    @FXML
+    private TextField title_edit;
+
+    @FXML
+    private TextField name_edit;
+
+    @FXML
+    private TextField level_edit;
     
+    @FXML
+    private Button kaydet;
     
     ObservableList<UserTable> oblist = FXCollections.observableArrayList();
     
@@ -164,16 +177,6 @@ public class LoginMainController implements Initializable {
         usertable.setItems(oblist);
         
         }
-    
-   /* @FXML
-    public void selectRow(ActionEvent ex) {
-        usertable.setOnMouseClicked((MouseEvent event) -> {
-        if(event.getButton().equals(MouseButton.PRIMARY)){
-            System.out.println(usertable.getSelectionModel().getSelectedItem());
-        }
-    });
-    } */
-        
     @FXML
     public void deleteAction(ActionEvent e5) {
         
@@ -220,5 +223,61 @@ public class LoginMainController implements Initializable {
         }
         
         
+    }
+    @FXML
+    public void editAction(ActionEvent e) throws SQLException{
+        usertable.setOnMouseClicked((MouseEvent event) -> {
+        if(event.getButton().equals(MouseButton.PRIMARY)){
+            System.out.println(usertable.getSelectionModel().getSelectedItem());
+        }
+    });
+        name_edit.setText(usertable.getSelectionModel().getSelectedItem().getName());
+        title_edit.setText(usertable.getSelectionModel().getSelectedItem().getTitle());
+        level_edit.setText(usertable.getSelectionModel().getSelectedItem().getLevel());
+        
+        
+    }
+    @FXML
+    public void saveAction(ActionEvent e7) {
+        
+            usertable.setOnMouseClicked((MouseEvent event) -> {
+                if(event.getButton().equals(MouseButton.PRIMARY)){
+                    System.out.println(usertable.getSelectionModel().getSelectedItem());
+                }
+            });
+            String name = name_edit.getText();
+            String title = title_edit.getText();
+            String level = level_edit.getText();
+            
+            
+            try {
+            Connection con = Connectionsql.getConnection();
+            PreparedStatement ps;
+            
+            String query = "UPDATE PERSON SET name = ? , title = ? , level = ? WHERE name = ? AND title = ? AND level = ?";
+            ps = con.prepareStatement(query);
+            ps.setString(1, name);
+            ps.setString(2, title);
+            ps.setString(3, level);
+            ps.setString(4, usertable.getSelectionModel().getSelectedItem().getName());
+            ps.setString(5, usertable.getSelectionModel().getSelectedItem().getTitle());
+            ps.setString(6, usertable.getSelectionModel().getSelectedItem().getLevel());
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+            JOptionPane.showMessageDialog(null, "Düzenleme Başarılı");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Düzenleme Başarısız" + ex);
+        } try {
+            Connection conn = Connectionsql.getConnection();
+            String query1 = "UPDATE LOGIN SET name = ? WHERE name = ? ";
+            PreparedStatement ps1;
+            ps1 = conn.prepareStatement(query1);
+            ps1.setString(1, name);
+            ps1.setString(2, usertable.getSelectionModel().getSelectedItem().getName());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Düzenleme Başarısız1" + e);
+        }
     }
 }
