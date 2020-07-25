@@ -5,25 +5,19 @@
  */
 package FXML;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Observable;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.beans.property.Property;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,7 +33,9 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import neuprojekt.Connectionsql;
 import neuprojekt.UserTable;
-import org.hsqldb.Row;
+
+
+
 
 
 
@@ -120,7 +116,7 @@ public class LoginMainController implements Initializable {
         String name = username.getText();
         String pass = password.getText();
         try {
-            String query = "SELECT * FROM LOGIN WHERE NAME=? AND PASSWORD=?";
+            String query = "SELECT * FROM PERSON WHERE NAME=? AND PASSWORD=?";
         PreparedStatement statement = con.prepareStatement(query);
         statement.setString(1, name);
         statement.setString(2, pass);
@@ -206,21 +202,7 @@ public class LoginMainController implements Initializable {
             JOptionPane.showMessageDialog(null,"Silinemedi!\n" + ex);
         }
         
-        try {
-            
-            Connection conn = Connectionsql.getConnection();
-            PreparedStatement pst1;
-                    
-            String query1 = "DELETE FROM LOGIN WHERE name = ?";
-            pst1 = conn.prepareStatement(query1);
-            pst1.setString(1, usertable.getSelectionModel().getSelectedItem().getName());
-            System.out.println(query1);
-            pst1.executeUpdate();
-            pst1.close();
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Silinemedi!\n" + e);
-        }
+        
         
         
     }
@@ -268,16 +250,6 @@ public class LoginMainController implements Initializable {
             JOptionPane.showMessageDialog(null, "Düzenleme Başarılı");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Düzenleme Başarısız" + ex);
-        } try {
-            Connection conn = Connectionsql.getConnection();
-            String query1 = "UPDATE LOGIN SET name = ? WHERE name = ? ";
-            PreparedStatement ps1;
-            ps1 = conn.prepareStatement(query1);
-            ps1.setString(1, name);
-            ps1.setString(2, usertable.getSelectionModel().getSelectedItem().getName());
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Düzenleme Başarısız1" + e);
-        }
+        } 
     }
 }
